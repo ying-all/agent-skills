@@ -25,10 +25,19 @@ python deepdoc/assets/build.py --input note.md --output note.html --title "标�
 
 ## 技能
 
-| 技能 | 作用 |
-|---|---|
-| [deepdoc](deepdoc/) | 给一个主题，生成可离线阅读的交互式 HTML 文档（目录 / 搜索 / 深色模式 / 代码高亮） |
+| 技能 | 分类 | 作用 |
+|---|---|---|
+| [deepdoc](deepdoc/) | 文档 | 给一个主题，生成可离线阅读的交互式 HTML 文档（目录 / 搜索 / 深色模式 / 代码高亮） |
+
+## 约定
+
+- 目录名 = 技能名，小写短横线，如 `deepdoc`、`xss-notes`
+- **扁平存放**，不按分类建子目录；分类写在上面的表格里
+- 每个技能自带 `SKILL.md`（给 AI）和 `README.md`（给人）
+- 技能超过 10 个、或某一类超过 5 个，再考虑拆目录（用 `git mv`，历史不会丢）
 
 ## 新增技能
 
-建一个目录，放 `SKILL.md` 和 `README.md`，再到上表加一行。
+1. 建目录，放 `SKILL.md` 和 `README.md`
+2. 在上面的表格加一行，填上分类
+3. `git add . && git commit -m "add xxx" && git push`
