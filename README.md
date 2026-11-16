@@ -1,43 +1,66 @@
-﻿# agent-skills
+# agent-skills
 
-给 AI 用的技能包集合。按分类分文件夹，同类技能放一起。
+一组给 AI 用的「技能包」：把某件事的标准做法写成文件，让 AI 按固定流程干活，而不是每次自由发挥。
 
-## 下载
+## 什么是 skill
 
-- [ZIP 打包下载](https://github.com/ying-all/agent-skills/archive/refs/heads/main.zip)
-- 或 `git clone https://github.com/ying-all/agent-skills.git`
+一个技能 = 一个文件夹 + 一份 `SKILL.md`。
 
-## 使用
+`SKILL.md` 是写给 AI 的操作手册：什么时候用、按什么步骤做、做到什么程度算合格。AI 读到就照着执行，人读到也知道这件事该怎么做。
+
+和提示词的区别：提示词聊完就忘；技能是能版本管理、能复用、能分享的文件。
+
+## 快速开始
+
+**1. 下载**
+
+[ZIP 打包下载](https://github.com/ying-all/agent-skills/archive/refs/heads/main.zip) · 或 `git clone https://github.com/ying-all/agent-skills.git`
+
+**2. 用**
 
 把技能目录放到任意位置，然后跟 AI 说：
 
 ```
-读 <路径>/docs/deepdoc/SKILL.md，按里面流程写一篇「某某某方法论」
+读 <路径>/docs/deepdoc/SKILL.md，按里面流程写一篇「你的主题」
 ```
 
-自己跑构建：
+技能里带的脚本也可以直接跑：
 
 ```bash
 python docs/deepdoc/assets/build.py --input note.md --output note.html --title "标题"
 ```
 
-## 目录
+## 技能列表
 
-| 文件夹 | 分类 | 技能 |
+| 分类 | 技能 | 作用 |
 |---|---|---|
-| [docs](docs/) | 文档生成 | [deepdoc](docs/deepdoc/) |
+| 文档 | [deepdoc](docs/deepdoc/) | 给一个主题，生成可离线阅读的交互式 HTML 文档（目录 / 搜索 / 深色模式 / 代码高亮） |
 
-## 约定
+## 仓库结构
 
-- **一级目录 = 分类**：`docs` 文档、`security` 安全、`dev` 开发、`workflow` 工作流
-- **二级目录 = 技能名**，小写短横线，如 `docs/deepdoc`
-- 每个技能自带 `SKILL.md`（给 AI）和 `README.md`（给人）
-- 新技能先归到已有分类；没有合适的再新建分类
+```
+agent-skills/
+├── docs/              # 分类：文档生成
+│   └── deepdoc/       # 技能
+│       ├── SKILL.md   # 给 AI 的指令
+│       ├── README.md  # 给人的说明
+│       └── assets/    # 脚本与模板
+└── security/          # 分类：安全（待添加）
+```
 
-## 新增技能
+一级目录是分类，二级目录是技能。每个技能都能独立拿走用，互不依赖。
 
-1. 在对应分类目录下建技能目录
-2. 放 `SKILL.md` 和 `README.md`
-3. 上面的表格加一行
-4. `git add . && git commit -m "add xxx" && git push`
+## 加一个技能
 
+1. 在对应分类下建目录（没有合适的分类就新建一个分类目录）
+2. 放 `SKILL.md` 和 `README.md`，脚本放 `assets/`
+3. 在上面的技能列表加一行
+4. 提 PR，或直接 commit
+
+## 说明
+
+部分技能涉及安全测试，请只在自有靶场、明确授权的测试、CTF 和内部评估中使用。
+
+## License
+
+MIT
