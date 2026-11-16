@@ -42,6 +42,3 @@ Python 3.8+，Markdown 库已内置。想要代码高亮再装 Pygments：
 pip install Pygments
 ```
 
-## 边界
-
-仅用于授权范围内的学习与测试。
